@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
@@ -29,6 +30,12 @@ public class DeveloperServiceImpl implements DeveloperService {
 
         List<Developer> developerList = developerRepository.findAll();
         return developerList;
+    }
+
+    @Override
+    public Developer getDeveloperById(int id) {
+        Optional<Developer> optional = developerRepository.findById(id);
+        return optional.orElse(null);
     }
 
 }

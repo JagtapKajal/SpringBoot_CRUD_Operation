@@ -16,6 +16,7 @@ public class DeveloperController {
     @Autowired
     private DeveloperService developerService;
 
+    //  Create Developer
     @PostMapping("/addData")
     public ResponseEntity<String> addDeveloper(@RequestBody Developer developer){
 
@@ -25,10 +26,13 @@ public class DeveloperController {
 
     }
 
+    // Get All Developers
     @GetMapping("/getAllDeveloper")
     public ResponseEntity<List<Developer>> getAllDevelopers(){
 
         List<Developer> dlist = developerService.getAllDevelopers();
         return  new ResponseEntity<>(dlist,HttpStatus.OK);
     }
+
+
 }

@@ -11,4 +11,6 @@ public interface DeveloperService {
     //method to get all developers
 
     public List<Developer> getAllDevelopers();
+
+    public Developer getDeveloperById(int id);
 }
