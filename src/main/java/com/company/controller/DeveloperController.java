@@ -34,5 +34,13 @@ public class DeveloperController {
         return  new ResponseEntity<>(dlist,HttpStatus.OK);
     }
 
-
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Developer> getDeveloperById(@PathVariable int id){
+        Developer developer = developerService.getDeveloperById(id);
+        if (developer != null) {
+            return ResponseEntity.ok(developer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
