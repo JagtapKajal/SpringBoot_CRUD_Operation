@@ -16,7 +16,7 @@ public class DeveloperController {
     @Autowired
     private DeveloperService developerService;
 
-    //  Create Developer
+    //  Create/add Developer
     @PostMapping("/addData")
     public ResponseEntity<String> addDeveloper(@RequestBody Developer developer) {
 
@@ -35,7 +35,6 @@ public class DeveloperController {
     }
 
     //get developer by id
-
     @GetMapping("/getById/{id}")
     public ResponseEntity<Developer> getDeveloperById(@PathVariable int id) {
         Developer developer = developerService.getDeveloperById(id);
@@ -55,22 +54,21 @@ public class DeveloperController {
 
 
     // if user enter id which is not exist in DB
-
     @GetMapping("/DeleteById/{id}")
     public ResponseEntity<String> DeleteById(@PathVariable("id") int id) {
         String str = developerService.DeleteById(id);
         return new ResponseEntity<>(str, HttpStatus.OK);
     }
 
-
     // Update Developers by id
-    @PutMapping("/updateDevloper/{id}")
+    @PutMapping("/updateDeveloper/{id}")
     public ResponseEntity<Developer> updateById(@PathVariable int id, @RequestBody Developer developer) {
         Developer dev = developerService.updateDeveloper(id, developer);
         return new ResponseEntity<>(dev, HttpStatus.OK);
     }
 
     // save All Developers List
+    @GetMapping("/saveAllDeveloper")
     public ResponseEntity<String> getAllDevelopers(List<Developer> developers) {
         developerService.saveAllDeveloper(developers);
         return new ResponseEntity<>("Developer data saved", HttpStatus.CREATED);
