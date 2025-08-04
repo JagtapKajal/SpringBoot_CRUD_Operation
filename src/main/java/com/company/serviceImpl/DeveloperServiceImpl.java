@@ -18,7 +18,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Autowired
     private DeveloperRepository developerRepository;
 
-// Save a new Developers
+    // Save a new Developers
     @Override
     public String saveDeveloper(Developer developer) {
 
@@ -26,7 +26,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         return "Developer saved";
     }
 
-// Fet All Developers
+    // Fet All Developers
     @Override
     public List<Developer> getAllDevelopers() {
 
@@ -40,25 +40,19 @@ public class DeveloperServiceImpl implements DeveloperService {
         return optional.orElse(null);
     }
 
+    //Delete Single Developer which is exit in DB
     @Override
     public String deleteById(int id) {
-        developerRepository.deleteById( id);
+        developerRepository.deleteById(id);
         return "Developer deleted";
     }
 
-    //Update By Id
-
+    //Update Developers By id
     @Override
     public Developer updateDeveloper(int id, Developer newData) {
 
         Developer developer = developerRepository.findById(id).orElseThrow(()
                 -> new NullPointerException("id is not found" + id));
-
-//        System.err.println("Old developer from db" + developer);
-//        System.err.println("Developer object with value to be updated" + newData);
-//
-//
-//        System.err.println("Developer with updated value" + updateDeveloper);
 
         developer.setfName(newData.getfName());
         developer.setlName(newData.getlName());
@@ -70,9 +64,19 @@ public class DeveloperServiceImpl implements DeveloperService {
         return updateDeveloper;
     }
 
+    // Save List of Developers
     @Override
     public void saveAllDeveloper(List<Developer> developers) {
         developerRepository.saveAll(developers);
+    }
+
+    // if user enter id which is not exist in DB for this problem handle exception
+    @Override
+    public String DeleteById(int id) {
+        Developer developer = developerRepository.findById(id).orElseThrow(()
+                -> new NullPointerException("id Does Not Exits in DB" + id));
+        developerRepository.deleteById(id);
+        return "Developer Deleted Successfully";
     }
 
 

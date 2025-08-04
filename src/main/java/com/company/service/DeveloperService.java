@@ -6,17 +6,25 @@ import java.util.List;
 
 public interface DeveloperService {
 
+    // It will save one Developer details at a time
     public String saveDeveloper(Developer developer);
 
     //method to get all developers
-
     public List<Developer> getAllDevelopers();
 
+    // method to get developer by id
     public Developer getDeveloperById(int id);
 
+    // Delete Developers By id
     public String deleteById(int id);
 
+    //Update Developer Details using Setter/Getter
     Developer updateDeveloper(int id, Developer newData);
 
+    // It will save All Developers(List of Developers)
     public void saveAllDeveloper(List<Developer> developers);
+
+    // to handle not exits id in DB
+    public String DeleteById(int id);
 }
+
