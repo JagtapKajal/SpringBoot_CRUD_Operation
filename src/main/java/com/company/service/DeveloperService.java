@@ -13,4 +13,10 @@ public interface DeveloperService {
     public List<Developer> getAllDevelopers();
 
     public Developer getDeveloperById(int id);
+
+    public String deleteById(int id);
+
+    Developer updateDeveloper(int id, Developer newData);
+
+    public void saveAllDeveloper(List<Developer> developers);
 }

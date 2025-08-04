@@ -4,6 +4,8 @@ import com.company.entity.Developer;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +39,41 @@ public class DeveloperServiceImpl implements DeveloperService {
         Optional<Developer> optional = developerRepository.findById(id);
         return optional.orElse(null);
     }
+
+    @Override
+    public String deleteById(int id) {
+        developerRepository.deleteById( id);
+        return "Developer deleted";
+    }
+
+    //Update By Id
+
+    @Override
+    public Developer updateDeveloper(int id, Developer newData) {
+
+        Developer developer = developerRepository.findById(id).orElseThrow(()
+                -> new NullPointerException("id is not found" + id));
+
+//        System.err.println("Old developer from db" + developer);
+//        System.err.println("Developer object with value to be updated" + newData);
+//
+//
+//        System.err.println("Developer with updated value" + updateDeveloper);
+
+        developer.setfName(newData.getfName());
+        developer.setlName(newData.getlName());
+        developer.setCity(newData.getCity());
+        developer.setAge(newData.getAge());
+        developer.setSalary(newData.getSalary());
+
+        Developer updateDeveloper = developerRepository.save(developer);
+        return updateDeveloper;
+    }
+
+    @Override
+    public void saveAllDeveloper(List<Developer> developers) {
+        developerRepository.saveAll(developers);
+    }
+
 
 }
