@@ -87,7 +87,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByCity(String city) {
 
         List<Developer> DeveloperList = developerRepository.findAll();
-        List<Developer> filterList =  DeveloperList.stream().filter(developer ->
+        List<Developer> filterList = DeveloperList.stream().filter(developer ->
                 developer.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
         return filterList;
     }
@@ -96,7 +96,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByGender(String gender) {
 
         List<Developer> DeveloperList = developerRepository.findAll();
-        List<Developer> filterList =  DeveloperList.stream().filter(developer ->
+        List<Developer> filterList = DeveloperList.stream().filter(developer ->
                 developer.getGender().equalsIgnoreCase(gender)).collect(Collectors.toList());
         return filterList;
     }

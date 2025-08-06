@@ -76,21 +76,22 @@ public class DeveloperController {
         return new ResponseEntity<>("Developer data saved", HttpStatus.CREATED);
     }
 
+
+    // ti get city and gender in single API
     @GetMapping("/filter")
     public ResponseEntity<List<Developer>> filteredList(@RequestParam(required = false) String city,
-                                                        @RequestParam(required = false) String gender){
+                                                        @RequestParam(required = false) String gender) {
 
-       // List<Developer> filteredList = developerService.filterByCity(city);
+        // List<Developer> filteredList = developerService.filterByCity(city);
 
         List<Developer> sortedList = new ArrayList<>();
-        if(city != null){
+        if (city != null) {
             sortedList = developerService.filterByCity(city);
-        }
-        else{
-          sortedList =  developerService.filterByGender(gender);
+        } else {
+            sortedList = developerService.filterByGender(gender);
 
         }
-        return new ResponseEntity<>(sortedList,HttpStatus.OK);
+        return new ResponseEntity<>(sortedList, HttpStatus.OK);
 
     }
 
