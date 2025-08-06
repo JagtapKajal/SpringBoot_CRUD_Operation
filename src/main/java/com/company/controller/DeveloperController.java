@@ -77,7 +77,7 @@ public class DeveloperController {
     }
 
 
-    // ti get city and gender in single API
+    // to get city and gender in single API
     @GetMapping("/filter")
     public ResponseEntity<List<Developer>> filteredList(@RequestParam(required = false) String city,
                                                         @RequestParam(required = false) String gender) {
