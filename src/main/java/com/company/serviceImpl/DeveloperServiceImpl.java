@@ -23,10 +23,10 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public String saveDeveloper(Developer developer) {
 
-       String devId =  DeveloperIdGenerator.generateId(developer);
+        String devId = DeveloperIdGenerator.generateId(developer);
         developer.setDeveloperId(devId);
         Developer developer1 = developerRepository.save(developer);
-        return "Hey " + developer1.getfName() + " Your id is: "+ developer1.getDeveloperId();
+        return "Hey " + developer1.getfName() + " Your id is: " + developer1.getDeveloperId();
     }
 
     // Fet All Developers
