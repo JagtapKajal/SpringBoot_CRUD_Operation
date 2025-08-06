@@ -21,8 +21,9 @@ public class DeveloperController {
     public ResponseEntity<String> addDeveloper(@RequestBody Developer developer) {
 
         System.err.println(developer);
-        developerService.saveDeveloper(developer);
-        return new ResponseEntity<>("Developer data saved", HttpStatus.CREATED);
+
+        String data = developerService.saveDeveloper(developer);
+        return new ResponseEntity<>(data, HttpStatus.CREATED);
 
     }
 

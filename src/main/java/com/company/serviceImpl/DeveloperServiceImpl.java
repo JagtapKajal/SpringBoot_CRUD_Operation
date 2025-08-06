@@ -1,6 +1,7 @@
 package com.company.serviceImpl;
 
 import com.company.entity.Developer;
+import com.company.helper.DeveloperIdGenerator;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,10 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public String saveDeveloper(Developer developer) {
 
-        Developer saveDeveloper = developerRepository.save(developer);
-        return "Developer saved";
+       String devId =  DeveloperIdGenerator.generateId(developer);
+        developer.setDeveloperId(devId);
+        Developer developer1 = developerRepository.save(developer);
+        return "Hey " + developer1.getfName() + " Your id is: "+ developer1.getDeveloperId();
     }
 
     // Fet All Developers

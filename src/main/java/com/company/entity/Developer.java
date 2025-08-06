@@ -23,6 +23,10 @@ public class Developer {
 
     private long salary;
 
+    private String developerId;
+
+    private int yearOfBirth;
+
     public int getId() {
         return id;
     }
@@ -79,6 +83,22 @@ public class Developer {
         this.salary = salary;
     }
 
+    public String getDeveloperId() {
+        return developerId;
+    }
+
+    public void setDeveloperId(String developerId) {
+        this.developerId = developerId;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
     @Override
     public String toString() {
         return "Developer{" +
@@ -89,6 +109,8 @@ public class Developer {
                 ", city='" + city + '\'' +
                 ", gender='" + gender + '\'' +
                 ", salary=" + salary +
+                ", developerId='" + developerId + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
                 '}';
     }
 }
