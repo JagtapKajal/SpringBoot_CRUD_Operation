@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -74,4 +75,23 @@ public class DeveloperController {
         developerService.saveAllDeveloper(developers);
         return new ResponseEntity<>("Developer data saved", HttpStatus.CREATED);
     }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Developer>> filteredList(@RequestParam(required = false) String city,
+                                                        @RequestParam(required = false) String gender){
+
+       // List<Developer> filteredList = developerService.filterByCity(city);
+
+        List<Developer> sortedList = new ArrayList<>();
+        if(city != null){
+            sortedList = developerService.filterByCity(city);
+        }
+        else{
+          sortedList =  developerService.filterByGender(gender);
+
+        }
+        return new ResponseEntity<>(sortedList,HttpStatus.OK);
+
+    }
+
 }

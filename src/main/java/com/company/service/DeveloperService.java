@@ -26,5 +26,9 @@ public interface DeveloperService {
 
     // to handle not exits id in DB
     public String DeleteById(int id);
+
+    List<Developer> filterByCity(String city);
+
+    List<Developer> filterByGender(String gender);
 }
 
