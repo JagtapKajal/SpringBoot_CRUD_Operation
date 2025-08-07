@@ -83,6 +83,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         return "Developer Deleted Successfully";
     }
 
+    //It will filter only city from DB
     @Override
     public List<Developer> filterByCity(String city) {
 
@@ -92,6 +93,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         return filterList;
     }
 
+    //It will filter only gender from DB
     @Override
     public List<Developer> filterByGender(String gender) {
 

@@ -77,6 +77,10 @@ public class DeveloperController {
     }
 
 
+
+
+
+
     // to get city and gender in single API
     @GetMapping("/filter")
     public ResponseEntity<List<Developer>> filteredList(@RequestParam(required = false) String city,
