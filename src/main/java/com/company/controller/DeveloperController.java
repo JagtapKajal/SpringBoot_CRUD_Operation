@@ -79,8 +79,6 @@ public class DeveloperController {
     }
 
 
-
-
     // to get city and gender in single API
     @GetMapping("/filter")
     public ResponseEntity<List<Developer>> filteredList(@RequestParam(required = false) String city,
@@ -91,7 +89,7 @@ public class DeveloperController {
 
         List<Developer> filteredList = allDevelopers;
 
-      // List<Developer> filteredList = developerService.filterByCity(city);
+        // List<Developer> filteredList = developerService.filterByCity(city);
 
         List<Developer> sortedList = new ArrayList<>();
         if (city != null && gender != null) {
@@ -99,14 +97,11 @@ public class DeveloperController {
             filteredList = allDevelopers.stream()
                     .filter(dev -> dev.getCity().equalsIgnoreCase(city) && dev.getGender().equalsIgnoreCase(gender))
                     .collect(Collectors.toList());
-        }
-        else if (city != null) {
-            sortedList =  developerService.filterByCity(city);
-        }
-        else if (gender != null) {
-            sortedList =  developerService.filterByGender(gender);
-        }
-        else {
+        } else if (city != null) {
+            sortedList = developerService.filterByCity(city);
+        } else if (gender != null) {
+            sortedList = developerService.filterByGender(gender);
+        } else {
             return new ResponseEntity<>(allDevelopers, HttpStatus.BAD_REQUEST);
         }
 
