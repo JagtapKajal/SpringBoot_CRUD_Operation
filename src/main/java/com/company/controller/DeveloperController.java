@@ -116,15 +116,14 @@ public class DeveloperController {
 
     // filter by City
     @GetMapping("/filterByCity")
-    public ResponseEntity<List<Developer>> filterByCity(@RequestParam(required = false) String city)
-    {
+    public ResponseEntity<List<Developer>> filterByCity(@RequestParam(required = false) String city) {
         List<Developer> studentsList = developerService.filterByCity(city);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
     // filter by Gender
     @GetMapping("/filterByGender")
-    public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender)
-    {
+    public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender) {
         List<Developer> studentsList = developerService.filterByGender(gender);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
