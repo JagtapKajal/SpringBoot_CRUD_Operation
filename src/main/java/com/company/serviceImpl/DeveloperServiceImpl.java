@@ -62,8 +62,6 @@ public class DeveloperServiceImpl implements DeveloperService {
         developer.setlName(newData.getlName());
         developer.setCity(newData.getCity());
         developer.setAge(newData.getAge());
-        developer.setSalary(newData.getSalary());
-
         Developer updateDeveloper = developerRepository.save(developer);
         return updateDeveloper;
     }

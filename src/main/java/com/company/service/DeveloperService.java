@@ -32,8 +32,5 @@ public interface DeveloperService {
 
     //filter/get only gender from database
     List<Developer> filterByGender(String gender);
-
-
-    List<Developer> filterBySalary(int salary );
 }
 
