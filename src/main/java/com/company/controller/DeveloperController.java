@@ -114,4 +114,11 @@ public class DeveloperController {
 
     }
 
+    // filter by City
+    @GetMapping("/filterByCity")
+    public ResponseEntity<List<Developer>> filterByCity(@RequestParam(required = false) String city)
+    {
+        List<Developer> studentsList = developerService.filterByCity(city);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
