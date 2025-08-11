@@ -34,5 +34,6 @@ public interface DeveloperService {
     List<Developer> filterByGender(String gender);
 
 
+    List<Developer> filterBySalary(int salary );
 }
 
