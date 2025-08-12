@@ -32,5 +32,9 @@ public interface DeveloperService {
 
     //filter/get only gender from database
     List<Developer> filterByGender(String gender);
+
+    // filter Developer by their FirstName
+    List<Developer> filterByFirstName(String fName);
+
 }
 
