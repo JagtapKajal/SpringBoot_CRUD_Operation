@@ -127,4 +127,10 @@ public class DeveloperController {
         List<Developer> developerList = developerService.filterByGender(gender);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
+
+    @GetMapping("/filterByfName")
+    public ResponseEntity<List<Developer>> filterByfName(@RequestParam(required = false) String fName) {
+        List<Developer> studentsList = developerService.filterByFirstName(fName);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
