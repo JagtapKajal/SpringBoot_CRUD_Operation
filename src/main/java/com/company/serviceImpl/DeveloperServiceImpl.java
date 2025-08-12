@@ -27,7 +27,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         String devId = DeveloperIdGenerator.generateId(developer);
         developer.setDeveloperId(devId);
         Developer developer1 = developerRepository.save(developer);
-        return "Hey " + developer1.getfName() + " Your id is: " + developer1.getDeveloperId();
+        return "Hey " + developer1.getFName() + " Your id is: " + developer1.getDeveloperId();
     }
 
     // Fet All Developers
@@ -58,8 +58,8 @@ public class DeveloperServiceImpl implements DeveloperService {
         Developer developer = developerRepository.findById(id).orElseThrow(()
                 -> new NullPointerException("id is not found" + id));
 
-        developer.setfName(newData.getfName());
-        developer.setlName(newData.getlName());
+        developer.setFName(newData.getFName());
+        developer.setLName(newData.getLName());
         developer.setCity(newData.getCity());
         developer.setAge(newData.getAge());
         Developer updateDeveloper = developerRepository.save(developer);
@@ -104,7 +104,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public List<Developer> filterByFirstName(String fName) {
         List<Developer> filteredStudents = developerRepository.findAll().stream()
-                .filter((k -> fName.equalsIgnoreCase(k.getfName())))
+                .filter((k -> fName.equalsIgnoreCase(k.getFName())))
                 .collect(Collectors.toList());
         return filteredStudents;
 
@@ -113,7 +113,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public List<Developer> filterByLastName(String lName) {
         List<Developer> filteredDeveloper = developerRepository.findAll().stream()
-                .filter((k -> lName.equalsIgnoreCase(k.getlName())))
+                .filter((k -> lName.equalsIgnoreCase(k.getLName())))
                 .collect(Collectors.toList());
         return filteredDeveloper;
     }

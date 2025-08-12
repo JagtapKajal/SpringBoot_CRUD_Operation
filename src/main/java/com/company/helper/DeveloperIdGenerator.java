@@ -6,8 +6,8 @@ public class DeveloperIdGenerator {
 
     public static String generateId(Developer developer) {
 
-        String fName = developer.getfName();
-        String lName = developer.getlName();
+        String fName = developer.getFName();
+        String lName = developer.getLName();
         int yearofbirth = developer.getYearOfBirth();
 
 
