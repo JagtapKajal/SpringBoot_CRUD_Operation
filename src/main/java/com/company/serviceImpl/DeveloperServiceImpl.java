@@ -101,5 +101,12 @@ public class DeveloperServiceImpl implements DeveloperService {
         return filterList;
     }
 
+    @Override
+    public List<Developer> filterByFirstName(String fName) {
+        List<Developer> filteredStudents = developerRepository.findAll().stream()
+                .filter((k -> fName.equalsIgnoreCase(k.getfName())))
+                .collect(Collectors.toList());
+        return filteredStudents;
 
+    }
 }
