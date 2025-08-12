@@ -133,4 +133,11 @@ public class DeveloperController {
         List<Developer> studentsList = developerService.filterByFirstName(fName);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    // filter by LastName
+    @GetMapping("/filterBylName")
+    public ResponseEntity<List<Developer>> filterBylName(@RequestParam(required = false) String lName) {
+        List<Developer> studentsList = developerService.filterByLastName(lName);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
