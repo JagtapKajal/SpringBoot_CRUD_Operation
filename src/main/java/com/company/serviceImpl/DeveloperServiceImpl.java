@@ -22,14 +22,14 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Autowired
     private DeveloperRepository developerRepository;
 
-    // Save a new Developers
+//    // Save a new Developers
     @Override
     public String saveDeveloper(Developer developer) {
-
-        String devId = DeveloperIdGenerator.generateId(developer);
-        developer.setDeveloperId(devId);
-        Developer developer1 = developerRepository.save(developer);
-        return "Hey " + developer1.getFName() + " Your id is: " + developer1.getDeveloperId((int) cell.getNumericCellValue());
+//
+//        String devId = DeveloperIdGenerator.generateId(developer);
+//        developer.setDeveloperId(devId);
+//        Developer developer1 = developerRepository.save(developer);
+       return "Hey ";
     }
 
     // Fet All Developers

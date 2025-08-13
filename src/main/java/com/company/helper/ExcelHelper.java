@@ -1,13 +1,11 @@
 package com.company.helper;
 
-import com.company.controller.DeveloperController;
 import com.company.entity.Developer;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,81 +13,49 @@ import java.util.List;
 
 public class ExcelHelper {
 
-    //check that file is of Excel type or not
-    public static boolean checkExcelFormat(MultipartFile file) {
-        String contentType = file.getContentType();
+    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
-        return contentType.equals("application/vnd.openmlformats-officedocument.spreadsheetml.sheet");
+    public static boolean hasExcelFormat(MultipartFile file) {
+        return TYPE.equals(file.getContentType());
     }
 
     public static List<Developer> convertExcelTOListDeveloper(InputStream is) {
-
-        List<Developer> developerList = new ArrayList<>();
-
         try {
+            Workbook workbook = new XSSFWorkbook(is);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rows = sheet.iterator();
 
-            XSSFWorkbook workbook = new XSSFWorkbook(is);
-
-            XSSFSheet database = workbook.getSheet("Developer Database");
-
+            List<Developer> developers = new ArrayList<>();
             int rowNumber = 0;
 
-            Iterator<Row> iterator = database.iterator();
+            while (rows.hasNext()) {
+                Row currentRow = rows.next();
 
-            //it will return true or false and move to next row
-            while(iterator.hasNext()) {
-
-                Row row = iterator.next();
-
+                // Skip header
                 if (rowNumber == 0) {
                     rowNumber++;
                     continue;
                 }
 
-                Iterator<Cell> cells = row.iterator();
+                Developer developer = new Developer();
 
-                int count = 0;
+                developer.setId((int) currentRow.getCell(0).getNumericCellValue());
+                developer.setAge((int) currentRow.getCell(1).getNumericCellValue());
+                developer.setCity(currentRow.getCell(2).getStringCellValue());
+                developer.setFName(currentRow.getCell(3).getStringCellValue());
+                developer.setGender(currentRow.getCell(4).getStringCellValue());
+                developer.setLName(currentRow.getCell(5).getStringCellValue());
+                developer.setSalary((long) currentRow.getCell(6).getNumericCellValue());
 
-                Developer dev = new Developer();
-                while (cells.hasNext()) {
-                    Cell cell = cells.next();
-
-                    switch (count) {
-
-                        case 0:
-                            dev.setId((int) cell.getNumericCellValue());
-                            break;
-                        case 1:
-                            dev.setAge((int) cell.getNumericCellValue());
-                            break;
-                        case 2:
-                            dev.setCity(cell.getStringCellValue());
-                            break;
-                        case 3:
-                            dev.setFName(cell.getStringCellValue());
-                            break;
-                        case 4:
-                            dev.setGender(cell.getStringCellValue());
-                            break;
-                        case 5:
-                            dev.setLName(cell.getStringCellValue());
-                            break;
-                        case 6:
-                            dev.setSalary((int) cell.getNumericCellValue());
-                            break;
-                        default:
-                            System.out.println("Enter Valid Choice");
-                    }
-
-                    count++;
-                }
-                developerList.add(dev);
+                developers.add(developer);
             }
 
+            workbook.close();
+            return developers;
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to parse Excel file: " + e.getMessage());
         }
-        return developerList;
     }
 }
+

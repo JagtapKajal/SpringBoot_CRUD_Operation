@@ -1,37 +1,27 @@
 package com.company.controller;
 
 import com.company.helper.ExcelHelper;
-import com.company.service.DeveloperService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import com.company.service.ExcelService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Map;
-
 @RestController
-@CrossOrigin("*")
+@RequestMapping("/excel")
 public class ExcelController {
 
-    @Autowired
-    private DeveloperService developerService;
+    private final ExcelService excelService;
 
-    @PostMapping("Developer/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (ExcelHelper.checkExcelFormat(file)) {
-
-            this.developerService.saveDetail(file);
-
-            return ResponseEntity.ok(Map.of("Message", "File is Uploaded and data is saved to Database"));
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please Upload Excel File");
+    public ExcelController(ExcelService excelService) {
+        this.excelService = excelService;
     }
 
-
-
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadExcelFile(@RequestParam("file") MultipartFile file) {
+        if (ExcelHelper.hasExcelFormat(file)) {
+            excelService.save(file);
+            return ResponseEntity.ok("Excel file uploaded and data saved to database.");
+        }
+        return ResponseEntity.badRequest().body("Please upload an Excel file!");
+    }
 }
