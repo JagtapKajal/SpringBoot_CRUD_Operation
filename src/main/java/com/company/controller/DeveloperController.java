@@ -114,27 +114,28 @@ public class DeveloperController {
 
     }
 
-    // filter by City
+    // filter developer data by City
     @GetMapping("/filterByCity")
     public ResponseEntity<List<Developer>> filterByCity(@RequestParam(required = false) String city) {
         List<Developer> developerList = developerService.filterByCity(city);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
-    // filter by Gender
+    // filter developer data by Gender
     @GetMapping("/filterByGender")
     public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender) {
         List<Developer> developerList = developerService.filterByGender(gender);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
+    //filter developer data by first name
     @GetMapping("/filterByfName")
     public ResponseEntity<List<Developer>> filterByfName(@RequestParam(required = false) String fName) {
         List<Developer> studentsList = developerService.filterByFirstName(fName);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 
-    // filter by LastName
+    // filter developer data by LastName
     @GetMapping("/filterBylName")
     public ResponseEntity<List<Developer>> filterBylName(@RequestParam(required = false) String lName) {
         List<Developer> studentsList = developerService.filterByLastName(lName);

@@ -16,9 +16,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Developer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)  //This property for read only id from swagger
     private int id;
 
     private String fName;

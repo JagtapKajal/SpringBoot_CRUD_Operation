@@ -5,8 +5,6 @@ import com.company.helper.DeveloperIdGenerator;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +25,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         String devId = DeveloperIdGenerator.generateId(developer);
         developer.setDeveloperId(devId);
         Developer developer1 = developerRepository.save(developer);
-        return "Hey " + developer1.getFName() + " Your id is: " + developer1.getDeveloperId();
+        return "Hey " + developer1.getFName() + " Your id is: " + developer1.getDeveloperId((int) cell.getNumericCellValue());
     }
 
     // Fet All Developers
