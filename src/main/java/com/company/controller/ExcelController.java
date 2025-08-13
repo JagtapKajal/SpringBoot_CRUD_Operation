@@ -22,8 +22,8 @@ public class ExcelController {
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Upload Excel file", description = "Uploads an Excel file and stores data in the database")
-    public ResponseEntity<String> uploadExcelFile( @Parameter(description = "Excel file to upload", required = true)
-                                                       @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadExcelFile(@Parameter(description = "Excel file to upload", required = true)
+                                                  @RequestParam("file") MultipartFile file) {
         if (ExcelHelper.hasExcelFormat(file)) {
             try {
                 excelService.save(file);
