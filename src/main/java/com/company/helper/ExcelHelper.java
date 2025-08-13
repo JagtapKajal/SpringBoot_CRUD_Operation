@@ -15,14 +15,14 @@ import java.util.List;
 
 public class ExcelHelper {
 
-    //check that file is of excel type or not
+    //check that file is of Excel type or not
     public static boolean checkExcelFormat(MultipartFile file) {
         String contentType = file.getContentType();
 
-        return contentType.equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        return contentType.equals("application/vnd.openmlformats-officedocument.spreadsheetml.sheet");
     }
 
-    public List<Developer> convertExcelTOListDeveloper(InputStream is) {
+    public static List<Developer> convertExcelTOListDeveloper(InputStream is) {
 
         List<Developer> developerList = new ArrayList<>();
 
