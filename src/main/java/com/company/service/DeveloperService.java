@@ -40,5 +40,11 @@ public interface DeveloperService {
     // filter developer by their LastName
     List<Developer> filterByLastName(String lName);
 
+
+    //---- To get Excel sheet data----
+
+    public void saveDetail(MultipartFile file);
+
+    public List<Developer> getAllDev();
 }
 
