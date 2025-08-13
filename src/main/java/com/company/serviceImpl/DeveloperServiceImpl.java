@@ -2,11 +2,15 @@ package com.company.serviceImpl;
 
 import com.company.entity.Developer;
 import com.company.helper.DeveloperIdGenerator;
+import com.company.helper.ExcelHelper;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
+import org.apache.poi.ss.usermodel.Cell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -115,5 +119,24 @@ public class DeveloperServiceImpl implements DeveloperService {
                 .collect(Collectors.toList());
         return filteredDeveloper;
     }
+
+
+    // to get excel data
+    @Override
+    public void saveDetail(MultipartFile file) {
+
+        try {
+            List<Developer> developers = ExcelHelper.convertExcelTOListDeveloper(file.getInputStream());
+            this.developerRepository.saveAll(developers);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Developer> getAllDev() {
+        return this.developerRepository.findAll();
+    }
+
 
 }
