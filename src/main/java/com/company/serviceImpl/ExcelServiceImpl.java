@@ -27,7 +27,7 @@ public class ExcelServiceImpl {
     @Value("${excel.password}")
     private String excelPassword; // You can set in application.properties
 
-    private DeveloperRepository developerRepository; // replace with your repository
+    private final DeveloperRepository developerRepository; // replace with your repository
 
     public ExcelServiceImpl(DeveloperRepository repository) {
         this.developerRepository = repository;
