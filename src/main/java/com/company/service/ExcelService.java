@@ -25,7 +25,7 @@ public abstract class ExcelService {
     @Autowired
     private DeveloperRepository developerRepository;
 
-    public String saveExcelData(MultipartFile file) throws IOException {
+    public void saveExcelData(MultipartFile file) throws IOException {
         try (Workbook workbook = new XSSFWorkbook(file.getInputStream())) {
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -66,8 +66,6 @@ public abstract class ExcelService {
             try (FileOutputStream fos = new FileOutputStream(protectedFile)) {
                 fs.writeFilesystem(fos);
             }
-
-            return "Excel data saved to DB and protected file created at: " + protectedFile.getAbsolutePath();
 
         } catch (Exception e) {
             throw new RuntimeException("Data saved to DB, but failed to create password-protected file: " + e.getMessage());
