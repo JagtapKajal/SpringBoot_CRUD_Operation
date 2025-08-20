@@ -141,4 +141,10 @@ public class DeveloperController {
         List<Developer> studentsList = developerService.filterByLastName(lName);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    @GetMapping("/byAge/{age}")
+    public ResponseEntity<List<Developer>> getDeveloperByAge(@PathVariable("age") int age){
+        List<Developer> developerList = developerService.getDeveloperByAge(age);
+        return new ResponseEntity<>(developerList,HttpStatus.OK);
+    }
 }
