@@ -152,4 +152,9 @@ public class DeveloperController {
     public List<Developer> getAllDeveloper(){
         return developerService.getAllDeveloper();
     }
+
+    @GetMapping("/filter")
+    public List<Developer> getDeveloperByGenderAndCity(@RequestParam String gender, @RequestParam String city){
+        return developerService.getDeveloperByGenderAndCity(gender, city);
+    }
 }
