@@ -128,5 +128,10 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.findAllDeveloper();
     }
 
+    @Override
+    public List<Developer> getDeveloperByGenderAndCity(String gender, String city) {
+        return developerRepository.findByGenderAndCity(gender, city);
+    }
+
 
 }
