@@ -116,4 +116,12 @@ public class DeveloperServiceImpl implements DeveloperService {
         return filteredDeveloper;
     }
 
+    @Override
+    public List<Developer> getDeveloperByAge(int age) {
+        List<Developer> developerByAge = developerRepository.findByAge(age);
+        return developerByAge;
+
+    }
+
+
 }
