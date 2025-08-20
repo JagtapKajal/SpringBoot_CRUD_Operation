@@ -123,5 +123,10 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     }
 
+    @Override
+    public List<Developer> getAllDeveloper() {
+        return developerRepository.findAllDeveloper();
+    }
+
 
 }

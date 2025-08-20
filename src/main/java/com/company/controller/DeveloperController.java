@@ -147,4 +147,9 @@ public class DeveloperController {
         List<Developer> developerList = developerService.getDeveloperByAge(age);
         return new ResponseEntity<>(developerList,HttpStatus.OK);
     }
+
+    @GetMapping("/getAll")
+    public List<Developer> getAllDeveloper(){
+        return developerService.getAllDeveloper();
+    }
 }
