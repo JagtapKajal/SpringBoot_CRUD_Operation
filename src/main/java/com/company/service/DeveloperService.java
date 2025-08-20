@@ -40,5 +40,6 @@ public interface DeveloperService {
     // filter developer by their LastName
     List<Developer> filterByLastName(String lName);
 
+    List<Developer> getDeveloperByAge(int age);
 }
 
