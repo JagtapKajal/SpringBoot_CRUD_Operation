@@ -14,4 +14,6 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
     @Query("SELECT d FROM Developer d WHERE d.age= :age")
     List<Developer> findByAge(@Param("age") int age);
 
+    @Query(value = "SELECT * FROM Developer",nativeQuery = true)
+    List<Developer> findAllDeveloper();
 }
