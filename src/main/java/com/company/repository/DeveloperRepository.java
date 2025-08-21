@@ -23,4 +23,8 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
     @Query("SELECT d FROM Developer d WHERE d.gender = :gender AND d.city =:city")
     List<Developer> findByGenderAndCity(@Param("gender") String gender, @Param("city") String city);
 
+
+    //Native SQL Queries with nativeQuery = true
+    @Query(value = "SELECT * FROM developer WHERE salary =:salary", nativeQuery = true)
+    List<Developer> findBySalary(@Param("salary") Integer salary);
 }
