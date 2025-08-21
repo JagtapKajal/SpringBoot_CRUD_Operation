@@ -49,5 +49,7 @@ public interface DeveloperService {
     //Custom query with multiple parameters
     List<Developer> getDeveloperByGenderAndCity(String gender, String city);
 
+    //Native SQL Queries with nativeQuery = true
+    List<Developer> findBySalary(Integer salary);
 }
 
