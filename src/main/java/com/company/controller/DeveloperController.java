@@ -157,4 +157,9 @@ public class DeveloperController {
     public List<Developer> getDeveloperByGenderAndCity(@RequestParam(required = false) String gender, @RequestParam(required = false) String city){
         return developerService.getDeveloperByGenderAndCity(gender, city);
     }
+
+    @GetMapping("/bySalary")
+    public List<Developer> getDeveloperBySalary(@RequestParam(required = false) Integer salary){
+        return developerService.findBySalary(salary);
+    }
 }
