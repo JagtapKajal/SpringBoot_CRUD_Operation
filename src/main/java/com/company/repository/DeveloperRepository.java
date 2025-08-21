@@ -2,9 +2,11 @@ package com.company.repository;
 
 import com.company.entity.Developer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,4 +29,10 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
     //Native SQL Queries with nativeQuery = true
     @Query(value = "SELECT * FROM developer WHERE salary =:salary", nativeQuery = true)
     List<Developer> findBySalary(@Param("salary") Integer salary);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE developer SET city = : city WHERE id = :id", nativeQuery = true)
+    int updateDeveloperCityById(int id, String city);
 }
