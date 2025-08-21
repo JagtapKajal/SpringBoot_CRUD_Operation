@@ -142,24 +142,35 @@ public class DeveloperController {
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 
+    //1. Basic Usage with JPQL (Java Persistence Query Language)
     @GetMapping("/byAge/{age}")
     public ResponseEntity<List<Developer>> getDeveloperByAge(@PathVariable("age") int age){
         List<Developer> developerList = developerService.getDeveloperByAge(age);
         return new ResponseEntity<>(developerList,HttpStatus.OK);
     }
 
+    //2. Named Parameters in @Query
     @GetMapping("/getAll")
     public List<Developer> getAllDeveloper(){
         return developerService.getAllDeveloper();
     }
 
+    //3. Custom Query with Multiple Parameters
     @GetMapping("/customFilter")
     public List<Developer> getDeveloperByGenderAndCity(@RequestParam(required = false) String gender, @RequestParam(required = false) String city){
         return developerService.getDeveloperByGenderAndCity(gender, city);
     }
 
+    //4. Native SQL Queries with nativeQuery = true
     @GetMapping("/bySalary")
     public List<Developer> getDeveloperBySalary(@RequestParam(required = false) Integer salary){
         return developerService.findBySalary(salary);
+    }
+
+    //. Custom UPDATE Query
+    @PutMapping("/{id}/city")
+    public int updateCity(@PathVariable int id,@RequestParam String city){
+      int developer = developerService.updateCity(id, city);
+        return developer;
     }
 }
