@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -131,6 +132,12 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public List<Developer> getDeveloperByGenderAndCity(String gender, String city) {
         return developerRepository.findByGenderAndCity(gender, city);
+    }
+
+    @Override
+    public List<Developer> findBySalary(Integer salary) {
+        List<Developer> list =(developerRepository.findBySalary(salary));
+        return list ;
     }
 
 
