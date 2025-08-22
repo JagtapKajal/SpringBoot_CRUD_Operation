@@ -173,4 +173,9 @@ public class DeveloperController {
       int developer = developerService.updateCity(id, city);
         return developer;
     }
+
+    public int deleteCity(@PathVariable int id,@RequestParam String city){
+        int developer = developerService.deleteCity(id, city);
+        return developer;
+    }
 }
