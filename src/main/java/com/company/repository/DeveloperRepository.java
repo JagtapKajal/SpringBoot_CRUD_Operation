@@ -35,4 +35,8 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
     @Transactional
     @Query(value = "UPDATE developer SET city = : city WHERE id = :id", nativeQuery = true)
     int updateDeveloperCityById(int id, String city);
+
+
+    @Query(value = "DELETE developer SET city = : city WHERE id = :id", nativeQuery = true)
+    int deleteDeveloperCityById(int id, String city);
 }
