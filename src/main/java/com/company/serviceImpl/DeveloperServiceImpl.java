@@ -145,4 +145,9 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.updateDeveloperCityById(id, city);
     }
 
+    @Override
+    public int deleteCity(int id, String city) {
+        return developerRepository.;
+    }
+
 }
