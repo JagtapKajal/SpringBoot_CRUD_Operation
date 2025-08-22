@@ -53,5 +53,7 @@ public interface DeveloperService {
     List<Developer> findBySalary(Integer salary);
 
     public int updateCity(int id, String city);
+
+    public int deleteCity(int id, String city);
 }
 
