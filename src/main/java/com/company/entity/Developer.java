@@ -19,7 +19,8 @@ public class Developer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)  //This property for read only id from swagger
+    //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    //This property for read only id from swagger
     private int id;
 
     private String fName;
@@ -37,6 +38,10 @@ public class Developer {
     private String developerId;
 
     private int yearOfBirth;
+
+    private String dob;
+
+    private String DateAndTime;
 
 
 }
