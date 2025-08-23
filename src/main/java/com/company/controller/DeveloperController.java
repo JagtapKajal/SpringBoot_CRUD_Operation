@@ -169,13 +169,9 @@ public class DeveloperController {
 
     //. Custom UPDATE Query
     @PutMapping("/{id}/city")
-    public int updateCity(@PathVariable int id,@RequestParam String city){
-      int developer = developerService.updateCity(id, city);
-        return developer;
+    public String updateCity(@PathVariable int id,@RequestParam String city){
+       developerService.updateCity(id, city);
+        return "City updated successfully for developer with ID " + id;
     }
 
-    public int deleteCity(@PathVariable int id,@RequestParam String city){
-        int developer = developerService.deleteCity(id, city);
-        return developer;
-    }
 }
