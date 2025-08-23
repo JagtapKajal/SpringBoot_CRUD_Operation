@@ -30,6 +30,11 @@ public class DeveloperController {
 
     }
 
+    @PostMapping("/AddAllDeveloper")
+    public ResponseEntity<List<Developer>> addAllDeveloper(@RequestBody List<Developer> developer){
+       List<Developer> developerlist = developerService.AddAllDevelopers(developer);
+         return new ResponseEntity<>(developerlist,HttpStatus.CREATED);
+    }
     // Get All Developers
     @GetMapping("/getAllDeveloper")
     public ResponseEntity<List<Developer>> getAllDevelopers() {
@@ -173,5 +178,4 @@ public class DeveloperController {
        developerService.updateCity(id, city);
         return "City updated successfully for developer with ID " + id;
     }
-
 }
