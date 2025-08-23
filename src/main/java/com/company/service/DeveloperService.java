@@ -13,6 +13,9 @@ public interface DeveloperService {
     //method to get all developers
     public List<Developer> getAllDevelopers();
 
+    //add all developer from json
+    public List<Developer> AddAllDevelopers(List<Developer> developer);
+
     // method to get developer by id
     public Developer getDeveloperById(int id);
 
