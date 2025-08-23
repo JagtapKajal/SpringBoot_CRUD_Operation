@@ -5,6 +5,7 @@ import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,9 +34,14 @@ public class DeveloperServiceImpl implements DeveloperService {
     // Fet All Developers
     @Override
     public List<Developer> getAllDevelopers() {
-
         List<Developer> developerList = developerRepository.findAll();
         return developerList;
+    }
+
+    @Override
+    public List<Developer> AddAllDevelopers(List<Developer> developer) {
+        List<Developer> developerlist = developerRepository.saveAll(developer);
+        return developerlist;
     }
 
     @Override
@@ -147,4 +153,9 @@ public class DeveloperServiceImpl implements DeveloperService {
         developerRepository.updateDeveloperCityById(id, city);
     }
 
+    @Scheduled(fixedRate = 10000)
+    public void schedular(){
+        System.out.println("Hello  ");
+
+    }
 }
