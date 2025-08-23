@@ -3,6 +3,7 @@ package com.company.serviceImpl;
 import com.company.entity.Developer;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -141,13 +142,9 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public int updateCity(int id, String city) {
-        return developerRepository.updateDeveloperCityById(id, city);
-    }
-
-    @Override
-    public int deleteCity(int id, String city) {
-        return developerRepository.;
+    @Transactional
+    public void updateCity(int id, String city) {
+        developerRepository.updateDeveloperCityById(id, city);
     }
 
 }
