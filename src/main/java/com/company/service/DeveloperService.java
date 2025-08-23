@@ -52,8 +52,7 @@ public interface DeveloperService {
     //Native SQL Queries with nativeQuery = true
     List<Developer> findBySalary(Integer salary);
 
-    public int updateCity(int id, String city);
+    public void updateCity(int id, String city);
 
-    public int deleteCity(int id, String city);
 }
 
