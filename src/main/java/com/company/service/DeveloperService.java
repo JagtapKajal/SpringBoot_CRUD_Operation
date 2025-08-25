@@ -10,7 +10,7 @@ public interface DeveloperService {
     // It will save one Developer details at a time
     public String saveDeveloper(Developer developer);
 
-    //method to get all developers
+    //method to get all developersL
     public List<Developer> getAllDevelopers();
 
     //add all developer from json
