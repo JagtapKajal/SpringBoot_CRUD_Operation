@@ -13,9 +13,9 @@ import java.util.List;
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
-    //JPQL (Custom Query) uses entity class names and property names, not table or column names
-    @Query("SELECT d FROM Developer d WHERE d.age= :age")
-    List<Developer> findByAge(@Param("age") int age);
+//    //JPQL (Custom Query) uses entity class names and property names, not table or column names
+//    @Query("SELECT d FROM Developer d WHERE d.age= :age")
+//    List<Developer> findByAge(@Param("age") int age);
 
     //Native query means normal SQL query
     @Query(value = "SELECT * FROM Developer",nativeQuery = true)
