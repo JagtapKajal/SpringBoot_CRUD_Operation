@@ -43,8 +43,8 @@ public interface DeveloperService {
     // filter developer by their LastName
     List<Developer> filterByLastName(String lName);
 
-    //custom query get developer by age
-    List<Developer> getDeveloperByAge(int age);
+//    //custom query get developer by age
+//    List<Developer> getDeveloperByAge(int age);
 
     //Native query to get all developer
     List<Developer> getAllDeveloper();
