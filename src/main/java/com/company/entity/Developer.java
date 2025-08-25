@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Entity
 // Lombok dependency will automatically add the Getter and Setters
@@ -39,9 +42,9 @@ public class Developer {
 
     private int yearOfBirth;
 
-    private String dob;
+    private LocalDate dob;
 
-    private String DateAndTime;
+    private LocalDateTime DateAndTime;
 
 
 }
