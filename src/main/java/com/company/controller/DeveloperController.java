@@ -147,12 +147,6 @@ public class DeveloperController {
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 
-    //1. Basic Usage with JPQL (Java Persistence Query Language)
-    @GetMapping("/byAge/{age}")
-    public ResponseEntity<List<Developer>> getDeveloperByAge(@PathVariable("age") int age){
-        List<Developer> developerList = developerService.getDeveloperByAge(age);
-        return new ResponseEntity<>(developerList,HttpStatus.OK);
-    }
 
     //2. Named Parameters in @Query
     @GetMapping("/getAll")
