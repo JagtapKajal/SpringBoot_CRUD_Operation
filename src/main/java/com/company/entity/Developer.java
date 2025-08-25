@@ -1,10 +1,7 @@
 package com.company.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -30,6 +27,7 @@ public class Developer {
 
     private String lName;
 
+    @Transient
     private int age;
 
     private String city;
