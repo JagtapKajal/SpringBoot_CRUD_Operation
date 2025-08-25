@@ -1,6 +1,5 @@
 package com.company.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +7,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 
 @Entity
@@ -44,5 +44,10 @@ public class Developer {
 
     private LocalDateTime DateAndTime;
 
-
+public int getAge(){
+    if(dob == null){
+        return 0;
+    }
+    return Period.between(dob, LocalDate.now()).getYears();
+}
 }
