@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -124,12 +125,12 @@ public class DeveloperServiceImpl implements DeveloperService {
         return filteredDeveloper;
     }
 
-    @Override
-    public List<Developer> getDeveloperByAge(int age) {
-        List<Developer> developerByAge = developerRepository.findByAge(age);
-        return developerByAge;
-
-    }
+//    @Override
+//    public List<Developer> getDeveloperByAge(int age) {
+//        List<Developer> developerByAge = developerRepository.findByAge(age);
+//        return developerByAge;
+//
+//    }
 
     @Override
     public List<Developer> getAllDeveloper() {
@@ -157,5 +158,22 @@ public class DeveloperServiceImpl implements DeveloperService {
     public void schedular(){
         System.out.println("Hello  ");
 
+    }
+
+    // Runs every day at midnight (00:00)
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void updateAges() {
+        List<Developer> developers = developerRepository.findAll();
+        LocalDate today = LocalDate.now();
+
+        for (Developer dev : developers) {
+            if (dev.getDob() != null &&
+                    dev.getDob().getDayOfMonth() == today.getDayOfMonth() &&
+                    dev.getDob().getMonth() == today.getMonth()) {
+
+                dev.setAge(dev.getAge() + 1); // increase age
+                developerRepository.save(dev); // update in DB
+            }
+        }
     }
 }
