@@ -15,6 +15,7 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
     List<Developer> findByDeveloperIdIsNull();
 
+    //to check developer id is missing or not
     List<Developer> findByDeveloperIdIsNullOrDeveloperIdEquals(String empty);
 
 //    //JPQL (Custom Query) uses entity class names and property names, not table or column names
