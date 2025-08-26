@@ -165,7 +165,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     }
 
-    // Runs every day at midnight (00:00)
+    // Runs every day at midnight (00:00) and display msg if developer id is missing
     @Scheduled(cron = "0 0 0 * * ?")
     public void updateAges() {
         List<Developer> developers = developerRepository.findAll();
