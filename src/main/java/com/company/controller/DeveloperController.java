@@ -172,4 +172,10 @@ public class DeveloperController {
        developerService.updateCity(id, city);
         return "City updated successfully for developer with ID " + id;
     }
+
+    //created method if developer id is missing
+    @GetMapping("/missing-developer-ids")
+    public List<Developer> getMissingDeveloperIds() {
+        return developerService.findByDeveloperIdIsNullOrDeveloperIdEquals("");
+    }
 }
