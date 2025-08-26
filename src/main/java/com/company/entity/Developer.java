@@ -45,7 +45,7 @@ public class Developer {
     private LocalDateTime DateAndTime;
 
     //To calculate user age by DOB
-public int getAge(){
+    public int getAge(){
     if(dob == null){
         return 0;
     }
