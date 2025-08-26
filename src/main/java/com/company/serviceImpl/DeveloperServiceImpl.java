@@ -175,5 +175,9 @@ public class DeveloperServiceImpl implements DeveloperService {
                 developerRepository.save(dev); // update in DB
             }
         }
+        if(!developers.isEmpty()){
+            System.out.println("Found developers with missing ID: "+developers.size());
+
+        }
     }
 }
