@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
+    List<Developer> findByDeveloperIdIsNull();
+
 //    //JPQL (Custom Query) uses entity class names and property names, not table or column names
 //    @Query("SELECT d FROM Developer d WHERE d.age= :age")
 //    List<Developer> findByAge(@Param("age") int age);
