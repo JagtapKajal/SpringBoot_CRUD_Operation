@@ -154,6 +154,11 @@ public class DeveloperServiceImpl implements DeveloperService {
         developerRepository.updateDeveloperCityById(id, city);
     }
 
+    @Override
+    public List<Developer> findByDeveloperIdIsNullOrDeveloperIdEquals(String empty) {
+        return developerRepository.findByDeveloperIdIsNullOrDeveloperIdEquals("");
+    }
+
     @Scheduled(fixedRate = 10000)
     public void schedular(){
         System.out.println("Hello  ");
