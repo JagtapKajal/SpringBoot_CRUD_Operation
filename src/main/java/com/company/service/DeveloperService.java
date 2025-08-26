@@ -57,6 +57,7 @@ public interface DeveloperService {
 
     public void updateCity(int id, String city);
 
+    //To check developer id is missing or not
     List<Developer> findByDeveloperIdIsNullOrDeveloperIdEquals(String empty);
 
 }
