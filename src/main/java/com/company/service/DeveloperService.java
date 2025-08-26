@@ -57,5 +57,7 @@ public interface DeveloperService {
 
     public void updateCity(int id, String city);
 
+    List<Developer> findByDeveloperIdIsNullOrDeveloperIdEquals(String empty);
+
 }
 
