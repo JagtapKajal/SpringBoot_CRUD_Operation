@@ -12,6 +12,7 @@ public class SpringCrudOperationApplication {
 		SpringApplication.run(SpringCrudOperationApplication.class, args);
 		System.out.println("This is my Project");
 		System.out.println("Project");
+		System.out.println("Spring Project");
 	}
 
 }
