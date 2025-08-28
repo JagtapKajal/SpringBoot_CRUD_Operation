@@ -36,12 +36,6 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
     List<Developer> findBySalary(@Param("salary") Integer salary);
 
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE developer SET city = : city WHERE id = :id", nativeQuery = true)
-    int updateDeveloperCityById(@Param("id") int id, @Param("city") String city);
-
-
     @Query(value = "DELETE developer SET city = : city WHERE id = :id", nativeQuery = true)
     int deleteDeveloperCityById(int id, String city);
 }
