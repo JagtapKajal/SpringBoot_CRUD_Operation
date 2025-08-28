@@ -27,6 +27,7 @@ public class Developer {
 
     private String lName;
 
+    @Transient
     private int age;
 
     private String city;
