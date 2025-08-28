@@ -182,7 +182,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         }
         if(!developers.isEmpty()){
             System.out.println("Found developers with missing ID: "+developers.size());
-            developers.forEach(dev->{System.out.println("Missing Id-> name: "+dev.getFName() + " " + dev.getLName());});
+            developers.forEach(dev->{System.out.println("Missing developer Id-> name: "+dev.getFName() + " " + dev.getLName());});
         }
         else{
             System.out.println("All developers have valid Id ");
